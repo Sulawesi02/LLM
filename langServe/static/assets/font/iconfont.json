@@ -1,0 +1,93 @@
+{
+  "id": "4620731",
+  "name": "web-ui",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4431967",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "39608113",
+      "name": "新对话",
+      "font_class": "xinduihua",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "24940455",
+      "name": "折叠",
+      "font_class": "zhedie",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "24940458",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "8094184",
+      "name": "附件",
+      "font_class": "fujian",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "25964418",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "16322466",
+      "name": "转发",
+      "font_class": "zhuanfa_2",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
+    },
+    {
+      "icon_id": "1029208",
+      "name": "刷新",
+      "font_class": "refresh-1-copy",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "15053894",
+      "name": "点赞",
+      "font_class": "24px",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "15053948",
+      "name": "复制",
+      "font_class": "ic_line_copy24px",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "10005375",
+      "name": "点踩",
+      "font_class": "diancai",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "5387424",
+      "name": "设备搜索",
+      "font_class": "shebeisousuo",
+      "unicode": "ead2",
+      "unicode_decimal": 60114
+    }
+  ]
+}

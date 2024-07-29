@@ -1,0 +1,384 @@
+body {
+    background: #F3F5FB;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 250px;
+    background: #FAFBFF;
+    height: 100vh;
+    transition: width 0.2s;
+    overflow: auto;
+    padding: 12px;
+
+    border-radius: 12px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+}
+
+/* 侧边栏导航 */
+.sidebar-nav {
+    padding: 12px;
+    box-sizing: border-box;
+    margin-top: 6px;
+}
+
+/* 折叠按钮 */
+.fold {
+    font-size: 30px;
+    color: #7d7d7d;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* 新对话按钮 */
+.new {
+    font-size: 30px;
+    color: #7d7d7d;
+    cursor: pointer;
+    float: right;
+    transition: color 0.3s;
+}
+
+/* 历史消息 */
+.history {
+    margin-top: 40px;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+/* 文本“历史对话” */
+.history .historical-sessions {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace;
+    text-align: center;
+}
+
+/* 历史对话搜索输入框 */
+.history .input-search-wrapper {
+    width: 226px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 搜索图标 */
+.history .input-search-wrapper #search-icon {
+    font-size: 30px;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding-left: 0.5rem;
+}
+
+/* 搜索输入框 */
+.history .input-search-wrapper #input-search {
+    outline: none;
+    border: none;
+    color: #0d0d0d;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    font-size: 1rem;
+    border-radius: 12px;
+}
+
+/* 历史对话项标题 */
+.history .title {
+    width: 100px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+/* “今天”的历史对话 */
+.history .today {
+    margin-top: 20px;
+    margin-bottom: 200px;
+}
+
+/* “最近7天”的历史对话 */
+.history .last-7days {
+    margin-bottom: 200px;
+}
+
+/* “最近30天”的历史对话 */
+.history .last-30days {
+    margin-bottom: 200px;
+}
+
+/* 历史对话项 */
+.history .msg-item {
+    display:flex;
+    width: 226px;
+    justify-content: space-between; 
+    align-items: center; 
+    white-space: nowrap;
+    font-size: 1rem;
+    margin-top: 20px;
+    overflow-x: hidden;
+    color: #7d7d7d;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* 对话删除按钮 */
+.history .msg-item .delete-icon{
+    width: 16px;
+    cursor : pointer;
+    color : #F93A37;
+}
+/* 内容区域 */
+.content {
+    background: #F2F5F9;
+    flex: 1;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 内容显示区域 */
+.content-log {
+    flex: 1;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 内容导航 */
+.content-nav {
+    height: 100px;
+    width: 100%;
+}
+
+/* 展开按钮 */
+.unfold {
+    display: none;
+    font-size: 30px;
+    color: #7d7d7d;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* 文本“情感分析智能系统” */
+.emotional-analysis {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* 聊天记录显示区域 */
+#res-log {
+    overflow-y: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: calc(100vh - 150px - 100px);
+}
+
+/* 用户容器 */
+.self-msg-container {
+    display: flex;
+    justify-content: flex-end;
+    /* 水平对齐到右侧 */
+    align-items: flex-start;
+    /* 垂直对齐 */
+    margin-bottom: 10px;
+    /* 消息之间的间距 */
+}
+
+/* 用户头像 */
+.user-avatar {
+    width: 40px;
+    /* 头像宽度 */
+    height: 40px;
+    /* 头像高度 */
+    border-radius: 50%;
+    /* 圆形头像 */
+    margin-right: 10px;
+    /* 头像和消息之间的间距 */
+    justify-content: end;
+}
+
+/* 用户消息 */
+.self-msg {
+    font-family: monospace;
+    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    background-color: #2D65F7;
+    border-radius: 12px;
+    align-self: flex-end;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+
+/* LLM容器 */
+.llm-msg-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+/* LLM消息 */
+.llm-msg {
+    padding: 0.625rem 1.25rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    max-width: 70%;
+    word-wrap: break-word;
+    margin-left: 10px;
+}
+
+/* llm头像 */
+.llm-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* llm文本 */
+.llm-msg p {
+    font-family: monospace;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-left: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+    align-self: flex-start;
+    white-space: pre-wrap;
+}
+
+pre {
+    white-space: pre-wrap; /* 保留空白和换行，允许自动换行 */
+    word-wrap: break-word; /* 确保长单词也能换行 */
+}
+
+.llm-msg .tool-bar span {
+    padding: 5px;
+}
+
+.llm-msg .tool-bar span:hover {
+    background-color: #FFFFFF;
+    ;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    display: none;
+}
+/* 内容页脚 */
+.content-footer {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 输入框 */
+.input-chat-wrapper {
+    width: 700px;
+    height: 50%;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: .375rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 附件 */
+#input-attachment {
+    color: #0d0d0d;
+    font-size: 32px;
+    margin: 3px;
+    cursor: pointer;
+    padding-left: 0.5rem;
+    transition: color 0.3s;
+}
+
+/* 消息输入框 */
+#input-chat {
+    outline: none;
+    border: none;
+    color: #0d0d0d;
+    width: 100%;
+    background-color: transparent;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: .5rem .75rem;
+}
+
+/* 发送按钮 */
+#input-send {
+    color: #d1d1d1;
+    font-size: 32px;
+    margin: 3px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* 鼠标悬停在折叠按钮上时 */
+#btn-fold-in:hover {
+    color: #000;
+}
+
+/* 鼠标悬停在展开按钮上时 */
+#btn-fold-out:hover {
+    color: #000;
+}
+
+/* 鼠标悬停在新对话按钮上时 */
+#btn-new:hover {
+    color: #000;
+}
+
+.history .msg-item:hover {
+    color: #000;
+}
+/* 鼠标悬停在发送按钮上时 */
+#input-send:hover {
+    color: #000;
+}
+
+/* 鼠标悬停在工具栏图标上时 */
+.llm-msg .tool-bar span:hover {
+    background-color: #f9f9f9;
+    color: #2D65F7;
+}
+
+#selectLLM {
+    width: 250px;
+    height: 22px;
+    border: 1px solid #000000;
+    color: #7d7d7d;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+#selectLLM:hover {
+    background-color: #ececec;
+}

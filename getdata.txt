@@ -1,0 +1,102 @@
+import csv
+import re
+import requests
+
+# 帖子URL列表
+urls = [
+    'https://bbs.hupu.com/627287644.html',
+    'https://bbs.hupu.com/58998104.html',
+    'https://bbs.hupu.com/627284910.html',
+    'https://bbs.hupu.com/627284841.html',
+    'https://bbs.hupu.com/627288475.html',
+    'https://bbs.hupu.com/627288475-2.html',
+    'https://bbs.hupu.com/627288475-3.html',
+    'https://bbs.hupu.com/627288475-4.html',
+    'https://bbs.hupu.com/627288475-5.html',
+    'https://bbs.hupu.com/627288475-6.html',
+    'https://bbs.hupu.com/627288475-7.html',
+    'https://bbs.hupu.com/627288475-8.html',
+    'https://bbs.hupu.com/627288475-9.html',
+    'https://bbs.hupu.com/627288475-10.html',
+    'https://bbs.hupu.com/627288475-11.html',
+    'https://bbs.hupu.com/627289079.html',
+    'https://bbs.hupu.com/627289079-2.html',
+    'https://bbs.hupu.com/627289079-3.html',
+    'https://bbs.hupu.com/627289079-4.html',
+    'https://bbs.hupu.com/627289079-5.html',
+    'https://bbs.hupu.com/627289079-6.html',
+    'https://bbs.hupu.com/627289079-7.html',
+    'https://bbs.hupu.com/627289079-8.html',
+    'https://bbs.hupu.com/627289079-9.html',
+    'https://bbs.hupu.com/627287865.html',
+    'https://bbs.hupu.com/627288544.html',
+    'https://bbs.hupu.com/627286073.html',
+    'https://bbs.hupu.com/627286073-2.html',
+    'https://bbs.hupu.com/627286073-3.html',
+    'https://bbs.hupu.com/627286073-4.html',
+    'https://bbs.hupu.com/627286073-5.html',
+    'https://bbs.hupu.com/627286073-6.html',
+    'https://bbs.hupu.com/627286073-7.html',
+    'https://bbs.hupu.com/627286073-8.html',
+    'https://bbs.hupu.com/627286073-9.html',
+    'https://bbs.hupu.com/627286073-10.html',
+    'https://bbs.hupu.com/627286073-11.html',
+    'https://bbs.hupu.com/627286073-12.html',
+    'https://bbs.hupu.com/627286073-13.html',
+    'https://bbs.hupu.com/627286073-14.html',
+    'https://bbs.hupu.com/627286073-15.html',
+    'https://bbs.hupu.com/627286073-16.html',
+    'https://bbs.hupu.com/627286073-17.html',
+    'https://bbs.hupu.com/627286073-18.html',
+    'https://bbs.hupu.com/627286073-19.html',
+    'https://bbs.hupu.com/627286073-20.html',
+    'https://bbs.hupu.com/627286073-21.html',
+    'https://bbs.hupu.com/627286073-22.html',
+    'https://bbs.hupu.com/627286073-23.html',
+    'https://bbs.hupu.com/627286073-24.html',
+    'https://bbs.hupu.com/627286073-25.html',
+    'https://bbs.hupu.com/627286073-26.html',
+    'https://bbs.hupu.com/627286073-27.html',
+    'https://bbs.hupu.com/627286073-28.html',
+    'https://bbs.hupu.com/627286073-29.html',
+    'https://bbs.hupu.com/627286073-30.html',
+    'https://bbs.hupu.com/627286073-31.html',
+    'https://bbs.hupu.com/627284355.html',
+    'https://bbs.hupu.com/627284355-2.html',
+    'https://bbs.hupu.com/627284355-3.html',
+    'https://bbs.hupu.com/627284355-4.html',
+    'https://bbs.hupu.com/627284355-5.html',
+    'https://bbs.hupu.com/627284355-6.html',
+    'https://bbs.hupu.com/627284355-7.html',
+    'https://bbs.hupu.com/627284355-8.html',
+    'https://bbs.hupu.com/627284355-9.html',
+    'https://bbs.hupu.com/627284355-10.html',
+    'https://bbs.hupu.com/627284355-11.html',
+    'https://bbs.hupu.com/627284355-12.html',
+    'https://bbs.hupu.com/627284355-13.html',
+]
+
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                         'Chrome/78.0.3904.108 Safari/537.36'}
+
+# 用于存储已写入的评论，防止重复
+written_comments = set()
+
+# 打开CSV文件，以追加模式写入数据
+with open('评论.csv', 'a', encoding='utf-8', newline='') as f:
+    csv_writer = csv.writer(f)
+    csv_writer.writerow(["评论"])  # 写入表头，只写一次
+
+    for url in urls:
+        respon = requests.get(url, headers=headers)
+        tod = respon.content.decode('utf-8')
+
+        # 通过正则表达式清洗出评论数据
+        comment = re.findall('<div class="thread-content-detail">.*?<p>(.*?)</p>', tod)
+
+        # 过滤掉包含图片标签和空行的评论，并去除重复的评论
+        for c in comment:
+            if not re.search('<img .*?>', c) and c.strip() and c not in written_comments:
+                written_comments.add(c)
+                print(c)
+                csv_writer.writerow([c])
